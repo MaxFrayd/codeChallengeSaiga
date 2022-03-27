@@ -1,25 +1,27 @@
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { React, useEffect } from 'react';
 import LoginForm from './forms/LoginForm';
-import Dashboard from './Components/Dashboard';
-import { Provider } from 'react-redux';
+import Dashboard from './components/Dashboard';
+import { useSelector } from 'react-redux';
+import setCurrentUser from './localStorage/setCurrentUser';
 
-function App({ store }) {
+function App() {
+  const navigate = useNavigate();
+  const currentUser = useSelector((state) => state.currentUser);
   useEffect(() => {
-    if (!store.currentUser) {
-      useNavigate()('/login');
+    if (!currentUser) {
+      navigate('/login');
+    } else {
+      setCurrentUser(currentUser);
+      navigate('/dashboard');
     }
-  }, []);
+  }, [currentUser]);
 
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/login" element={<LoginForm />}></Route>
-          <Route exact path="/dashboard" element={<Dashboard />}></Route>
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <Routes>
+      <Route exact path="/login" element={<LoginForm />}></Route>
+      <Route exact path="/dashboard" element={<Dashboard />}></Route>
+    </Routes>
   );
 }
 

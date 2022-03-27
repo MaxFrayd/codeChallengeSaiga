@@ -1,6 +1,13 @@
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import login from '../actions/login';
+
 export default function LoginForm() {
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
+    dispatch(login(formState.email));
   };
   return (
     <div className="d-flex align-items-center justify-content-center">
@@ -16,6 +23,8 @@ export default function LoginForm() {
               className="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
+              value={formState.email}
+              onChange={(event) => setFormState({ ...formState, email: event.target.value })}
             />
             <div id="emailHelp" className="form-text">
               We'll never share your email with anyone else.
@@ -29,17 +38,9 @@ export default function LoginForm() {
               type="password"
               className="form-control"
               id="exampleInputPassword1"
+              value={formState.password}
+              onChange={(event) => setFormState({ ...formState, password: event.target.value })}
             />
-          </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlFor="exampleCheck1">
-              Check me out
-            </label>
           </div>
           <button type="submit" className="btn btn-primary">
             Submit
