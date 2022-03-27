@@ -1,4 +1,4 @@
-export default function LoginComponent() {
+export default function LoginForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
   };

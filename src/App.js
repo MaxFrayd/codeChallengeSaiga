@@ -1,28 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { React } from "react";
-import LoginComponent from "./Forms/LoginComponent";
-import Dashboard from "./Components/Dashboard";
-import Preferences from "./Components/Preferences";
-import Users from "./Actions/Users";
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { React, useEffect } from 'react';
+import LoginForm from './forms/LoginForm';
+import Dashboard from './Components/Dashboard';
+import { Provider } from 'react-redux';
 
-function App() {
+function App({ store }) {
+  useEffect(() => {
+    if (!store.currentUser) {
+      useNavigate()('/login');
+    }
+  }, []);
+
   return (
-    <div className="wrapper">
-      <h1>Todo App</h1>
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route
-            exact
-            path="/logincomponent"
-            element={<LoginComponent />}
-          ></Route>
+          <Route exact path="/login" element={<LoginForm />}></Route>
           <Route exact path="/dashboard" element={<Dashboard />}></Route>
-          <Route exact path="/users" element={<Users />}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </Provider>
   );
 }
 
