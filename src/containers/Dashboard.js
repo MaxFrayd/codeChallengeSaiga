@@ -21,8 +21,10 @@ export default function Dashboard() {
   return (
     <div>
       <Header />
-      {toDos && toDos.map((todo) => <ToDo key={todo.id} todo={todo} />)}
-      <NewToDo />
+      <section className="container">
+        <NewToDo />
+        {toDos && toDos.map((todo) => <ToDo key={todo.id} todo={todo} />)}
+      </section>
     </div>
   );
 }

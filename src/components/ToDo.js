@@ -23,14 +23,20 @@ export default function ToDo({ todo }) {
   };
 
   return (
-    <div>
-      <h3>{todo.title}</h3>
-      <span>{todo.completed ? 'Completed' : 'In Progress'}</span>
-      <Popup trigger={<button>Edit ToDo</button>} modal>
-        {(close) => <ToDoForm todo={todo} closeModal={close} />}
-      </Popup>
-      <button onClick={toggleCompletion}>{todo.completed ? 'Uncomplete' : 'Complete'}</button>
-      <button onClick={handleDelete}>Delete</button>
+    <div className="mt-2 p-2 bg-light w-100 border rounded-2 d-flex align-items-center justify-content-between">
+      <h5 className="w-50">{todo.title}</h5>
+      <span className="w-25">{todo.completed ? 'Completed' : 'In Progress'}</span>
+      <div className="w-25 d-flex align-items-center justify-content-between">
+        <Popup trigger={<button className="btn btn-primary ms-1">Edit ToDo</button>} modal>
+          {(close) => <ToDoForm todo={todo} closeModal={close} />}
+        </Popup>
+        <button className="btn btn-success ms-1" onClick={toggleCompletion}>
+          {todo.completed ? 'Uncomplete' : 'Complete'}
+        </button>
+        <button className="btn btn-danger ms-1" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

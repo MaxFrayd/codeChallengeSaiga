@@ -12,11 +12,13 @@ export default function Header() {
   };
 
   return (
-    <div>
+    <div className="d-flex p-3 border-bottom border-light align-items-center justify-content-end bg-light">
       {currentUser ? (
         <>
-          <span>{currentUser.name}</span>
-          <button onClick={handleLogout}>Logout</button>
+          <span className="fs-5 fw-bold me-3">{currentUser.name}</span>
+          <button className="btn btn-dark" onClick={handleLogout}>
+            Logout
+          </button>
         </>
       ) : (
         <></>
