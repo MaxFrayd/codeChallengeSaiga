@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import login from '../actions/login';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
 
+  const errors = useSelector((state) => state.errors);
   const [formState, setFormState] = useState({ email: '', password: '' });
 
   const handleSubmit = (event) => {
@@ -46,6 +47,9 @@ export default function LoginForm() {
               value={formState.password}
               onChange={(event) => setFormState({ ...formState, password: event.target.value })}
             />
+          </div>
+          <div>
+            <p className="text-danger">{errors.login ? 'Wrong email or password.' : ''}</p>
           </div>
           <button type="submit" className="btn btn-primary">
             Login
