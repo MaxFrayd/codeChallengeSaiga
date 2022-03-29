@@ -8,10 +8,12 @@ import ToDoForm from '../forms/ToDoForm';
 
 export default function ToDo({ todo }) {
   const dispatch = useDispatch();
+
   const handleDelete = (event) => {
     event.preventDefault();
     dispatch(deleteToDo(todo.id));
   };
+
   const toggleCompletion = () => {
     if (todo.completed) {
       dispatch(updateToDo({ ...todo, completed: false }));
@@ -19,6 +21,7 @@ export default function ToDo({ todo }) {
       dispatch(updateToDo({ ...todo, completed: true }));
     }
   };
+
   return (
     <div>
       <h3>{todo.title}</h3>

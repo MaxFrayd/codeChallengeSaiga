@@ -3,8 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import logout from '../actions/logout';
 
 export default function Header() {
-  const currentUser = useSelector((state) => state.currentUser);
   const dispatch = useDispatch();
+  const currentUser = useSelector((state) => state.currentUser);
+
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(logout());
@@ -18,7 +19,7 @@ export default function Header() {
           <button onClick={handleLogout}>Logout</button>
         </>
       ) : (
-        <div></div>
+        <></>
       )}
     </div>
   );

@@ -6,6 +6,7 @@ export default function createToDo(newToDo) {
     const payload = {
       newToDo: response.data,
     };
+
     dispatch({
       type: 'createToDo',
       payload,

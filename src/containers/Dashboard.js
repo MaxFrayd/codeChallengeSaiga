@@ -8,14 +8,15 @@ import getToDos from '../actions/getToDos';
 
 export default function Dashboard() {
   const dispatch = useDispatch();
+
   const toDos = useSelector((state) => state.toDos);
   const currentUser = useSelector((state) => state.currentUser);
+
   useEffect(() => {
     if (currentUser) {
       dispatch(getToDos(currentUser.id));
     }
   }, [currentUser]);
-  console.log(toDos);
 
   return (
     <div>

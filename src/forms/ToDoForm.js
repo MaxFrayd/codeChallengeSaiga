@@ -4,11 +4,13 @@ import updateToDo from '../actions/updateToDo';
 import createToDo from '../actions/createToDo';
 
 export default function ToDoForm({ todo, closeModal }) {
+  const dispatch = useDispatch();
+
   const [formState, setFormState] = useState({
     title: todo ? todo.title : '',
     completed: todo ? todo.completed : false,
   });
-  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (todo) {
@@ -19,9 +21,10 @@ export default function ToDoForm({ todo, closeModal }) {
 
     closeModal();
   };
+
   return (
     <div className="d-flex align-items-center justify-content-center">
-      <div className="d-flex  flex-column justify-content-center vh-100  align-items-center">
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100">
         <h3>{todo ? 'Edit' : 'Create'} ToDo</h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -52,7 +55,6 @@ export default function ToDoForm({ todo, closeModal }) {
               onChange={(event) => setFormState({ ...formState, completed: event.target.checked })}
             />
           </div>
-
           <button type="submit" className="btn btn-primary">
             {todo ? 'Save' : 'Create'}
           </button>

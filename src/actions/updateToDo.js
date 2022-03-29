@@ -9,6 +9,7 @@ export default function updateToDo(newToDo) {
     const payload = {
       newToDo: response.data,
     };
+
     dispatch({
       type: 'updateToDo',
       payload,

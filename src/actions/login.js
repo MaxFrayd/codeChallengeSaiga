@@ -7,6 +7,7 @@ export default function login(userEmail) {
       userEmail,
       allUsers: response.data,
     };
+
     dispatch({
       type: 'login',
       payload,

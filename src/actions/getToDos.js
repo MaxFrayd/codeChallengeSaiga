@@ -6,8 +6,9 @@ export default function getToDos(userId) {
     const payload = {
       toDos: response.data,
     };
+
     dispatch({
-      type: 'toDos',
+      type: 'getToDos',
       payload,
     });
   };

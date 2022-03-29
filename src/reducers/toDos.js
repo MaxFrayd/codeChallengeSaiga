@@ -1,6 +1,6 @@
 const toDos = (state = [], action) => {
   switch (action.type) {
-    case 'toDos': {
+    case 'getToDos': {
       const { toDos } = action.payload;
 
       return toDos;
@@ -16,6 +16,7 @@ const toDos = (state = [], action) => {
     case 'deleteToDo': {
       const { id } = action.payload;
       const indexToDelete = state.findIndex((todo) => todo.id === id);
+
       state.splice(indexToDelete, 1);
 
       return [...state];
@@ -23,6 +24,7 @@ const toDos = (state = [], action) => {
     case 'updateToDo': {
       const { newToDo } = action.payload;
       const indexToUpdate = state.findIndex((todo) => todo.id === newToDo.id);
+
       state[indexToUpdate] = newToDo;
 
       return [...state];

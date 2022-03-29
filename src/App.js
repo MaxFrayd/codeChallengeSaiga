@@ -13,7 +13,6 @@ function App() {
     if (!currentUser) {
       navigate('/login');
     } else {
-      console.log(currentUser);
       setCurrentUser(currentUser);
       navigate('/dashboard');
     }
