@@ -1,4 +1,4 @@
-const currentUser = (state, action) => {
+const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'login': {
       const { userEmail, allUsers } = action.payload;
