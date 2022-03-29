@@ -13,9 +13,10 @@ function App() {
     if (!currentUser) {
       navigate('/login');
     } else {
-      setCurrentUser(currentUser);
       navigate('/dashboard');
     }
+
+    setCurrentUser(currentUser);
   }, [currentUser]);
 
   return (

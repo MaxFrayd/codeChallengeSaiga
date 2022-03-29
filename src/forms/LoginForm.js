@@ -51,9 +51,11 @@ export default function LoginForm() {
           <div>
             <p className="text-danger">{errors.login ? 'Wrong email or password.' : ''}</p>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
+          <div className="d-flex justify-content-end">
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </div>
         </form>
       </div>
     </div>
