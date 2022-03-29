@@ -19,6 +19,7 @@ export default function LoginForm() {
               Email address
             </label>
             <input
+              required
               type="email"
               className="form-control"
               id="exampleInputEmail1"
@@ -35,6 +36,7 @@ export default function LoginForm() {
               Password
             </label>
             <input
+              required
               type="password"
               className="form-control"
               id="exampleInputPassword1"
@@ -43,7 +45,7 @@ export default function LoginForm() {
             />
           </div>
           <button type="submit" className="btn btn-primary">
-            Submit
+            Login
           </button>
         </form>
       </div>

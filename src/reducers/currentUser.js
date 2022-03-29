@@ -2,16 +2,15 @@ const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'login': {
       const { userEmail, allUsers } = action.payload;
-      console.log(allUsers);
       const selectedUser = allUsers.find((user) => user.email === userEmail);
       if (selectedUser) {
-        return {
-          ...state,
-          currentUser: selectedUser,
-        };
+        return selectedUser;
       } else {
         return state;
       }
+    }
+    case 'logout': {
+      return null;
     }
     default:
       return state;

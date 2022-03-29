@@ -1,17 +1,19 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { React, useEffect } from 'react';
 import LoginForm from './forms/LoginForm';
-import Dashboard from './components/Dashboard';
+import Dashboard from './containers/Dashboard';
 import { useSelector } from 'react-redux';
 import setCurrentUser from './localStorage/setCurrentUser';
 
 function App() {
   const navigate = useNavigate();
   const currentUser = useSelector((state) => state.currentUser);
+
   useEffect(() => {
     if (!currentUser) {
       navigate('/login');
     } else {
+      console.log(currentUser);
       setCurrentUser(currentUser);
       navigate('/dashboard');
     }
